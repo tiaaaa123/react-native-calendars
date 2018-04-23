@@ -190,6 +190,7 @@ class CalendarList extends Component {
         //snapToInterval={this.calendarHeight}
         removeClippedSubviews={this.props.removeClippedSubviews !== undefined ? this.props.removeClippedSubviews: (Platform.OS === 'android' ? false : true)}
         pageSize={1}
+        hideHeader={this.props.hideHeader}
         horizontal={this.props.horizontal || false}
         pagingEnabled={this.props.pagingEnabled}
         onViewableItemsChanged={this.onViewableItemsChangedBound}
