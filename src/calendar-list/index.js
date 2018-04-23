@@ -207,7 +207,7 @@ class CalendarList extends Component {
 }
 
 CalendarList.defaultProps = {
-  calendarHeight: 360
+  // calendarHeight: 360
 };
 
 export default CalendarList;
