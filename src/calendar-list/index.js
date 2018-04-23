@@ -63,11 +63,11 @@ class CalendarList extends Component {
        * This selects range around current shown month [-0, +2] or [-1, +1] month for detail calendar rendering.
        * If `this.pastScrollRange` is `undefined` it's equal to `false` or 0 in next condition.
        */
-      if (this.pastScrollRange - 1 <= i && i <= this.pastScrollRange + 1 || !this.pastScrollRange && i <= this.pastScrollRange + 2) {
-        rows.push(rangeDate);
-      } else {
-        rows.push(rangeDateStr);
-      }
+      // if (this.pastScrollRange - 10 <= i && i <= this.pastScrollRange + 10 || !this.pastScrollRange && i <= this.pastScrollRange + 2) {
+      rows.push(rangeDate);
+      // } else {
+        // rows.push(rangeDateStr);
+      // }
     }
 
     this.state = {
@@ -76,10 +76,6 @@ class CalendarList extends Component {
       openDate: date,
       initialized: false
     };
-
-    this.onViewableItemsChangedBound = this.onViewableItemsChanged.bind(this);
-    this.renderCalendarBound = this.renderCalendar.bind(this);
-    this.getItemLayout = this.getItemLayout.bind(this);
   }
 
   scrollToDay(d, offset, animated) {
@@ -130,7 +126,7 @@ class CalendarList extends Component {
     });
   }
 
-  onViewableItemsChanged({viewableItems}) {
+  onViewableItemsChanged = ({viewableItems}) => {
     function rowIsCloseToViewable(index, distance) {
       for (let i = 0; i < viewableItems.length; i++) {
         if (Math.abs(index - parseInt(viewableItems[i].index)) <= distance) {
@@ -164,7 +160,7 @@ class CalendarList extends Component {
     });
   }
 
-  renderCalendar({item}) {
+  renderCalendar = ({item}) => {
     return (<CalendarListItem item={item} calendarHeight={this.calendarHeight} calendarWidth={this.props.horizontal ? this.calendarWidth : undefined  } {...this.props} />);
   }
 
@@ -192,8 +188,8 @@ class CalendarList extends Component {
         pageSize={1}
         horizontal={this.props.horizontal || false}
         pagingEnabled={this.props.pagingEnabled}
-        onViewableItemsChanged={this.onViewableItemsChangedBound}
-        renderItem={this.renderCalendarBound}
+        onViewableItemsChanged={this.onViewableItemsChanged}
+        renderItem={this.renderCalendar}
         showsVerticalScrollIndicator={this.props.showScrollIndicator !== undefined ? this.props.showScrollIndicator : false}
         showsHorizontalScrollIndicator={this.props.showScrollIndicator !== undefined ? this.props.showScrollIndicator : false}
         scrollEnabled={this.props.scrollingEnabled !== undefined ? this.props.scrollingEnabled : true}

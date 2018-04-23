@@ -12,7 +12,7 @@ export default class HorizontalCalendarList extends Component {
     return (
       <View>
         <CalendarList
-          current={'2012-05-16'}
+          current={'2018-05-16'}
           pastScrollRange={24}
           futureScrollRange={24}
           horizontal
