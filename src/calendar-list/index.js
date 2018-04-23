@@ -109,8 +109,6 @@ class CalendarList extends Component {
   componentWillReceiveProps(nextProps) {
     const current = parseDate(this.props.current);
     const nextCurrent = parseDate(nextProps.current);
-    console.log(current);
-    console.log(nextCurrent);
     this.setState({openDate: nextCurrent});
     if (nextCurrent && current && nextCurrent.getTime() !== current.getTime()) {
       this.scrollToMonth(nextCurrent);

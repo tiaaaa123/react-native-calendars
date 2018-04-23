@@ -20,7 +20,6 @@ export default function getStyle(theme={}) {
       color: appStyle.dayTextColor
     },
     calendar: {
-      backgroundColor: 'yellow'
     },
     ...(theme[STYLESHEET_ID] || {})
   });

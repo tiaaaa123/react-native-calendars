@@ -1,15 +1,16 @@
-import {StyleSheet, Platform} from 'react-native';
+import {Dimensions, StyleSheet, Platform} from 'react-native';
 import * as defaultStyle from '../../../style';
 
 const STYLESHEET_ID = 'stylesheet.day.basic';
+const {width} = Dimensions.get('window');
 
 export default function styleConstructor(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     base: {
       flex: 1,
-      width: 32,
-      height: 32,
+      width: width / 7,
+      height: width / 7,
       alignItems: 'center',
     },
     text: {
