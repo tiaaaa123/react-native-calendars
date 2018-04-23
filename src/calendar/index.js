@@ -100,6 +100,7 @@ class Calendar extends Component {
 
   componentWillReceiveProps(nextProps) {
     const current= parseDate(nextProps.current);
+    console.log(this.props.current, nextProps.current);
     if (current && current.toString('yyyy MM') !== this.state.currentMonth.toString('yyyy MM')) {
       this.setState({
         currentMonth: current.clone()
@@ -243,6 +244,8 @@ class Calendar extends Component {
   render() {
     const days = dateutils.page(this.state.currentMonth, this.props.firstDay);
     const weeks = [];
+    console.log('rendering new calendar.');
+    console.log('current should have changed by now');
     while (days.length) {
       weeks.push(this.renderWeek(days.splice(0, 7), weeks.length));
     }
