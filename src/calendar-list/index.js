@@ -63,7 +63,7 @@ class CalendarList extends Component {
        * This selects range around current shown month [-0, +2] or [-1, +1] month for detail calendar rendering.
        * If `this.pastScrollRange` is `undefined` it's equal to `false` or 0 in next condition.
        */
-      if (this.pastScrollRange - 2 <= i && i <= this.pastScrollRange + 2 || !this.pastScrollRange && i <= this.pastScrollRange + 2) {
+      if (this.pastScrollRange - 5 <= i && i <= this.pastScrollRange + 5 || !this.pastScrollRange && i <= this.pastScrollRange + 5) {
         rows.push(rangeDate);
       } else {
         rows.push(rangeDateStr);
@@ -142,16 +142,14 @@ class CalendarList extends Component {
     const visibleMonths = [];
     for (let i = 0; i < rowclone.length; i++) {
       let val = rowclone[i];
-      const rowShouldBeRendered = rowIsCloseToViewable(i, 2);
-      console.log('should render row', rowShouldBeRendered, val);
+      const rowShouldBeRendered = rowIsCloseToViewable(i, 5);
       if (rowShouldBeRendered && !rowclone[i].getTime) {
         val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
-      } else if (!rowShouldBeRendered) {
+      } else if (!rowclone[i].getTime && !rowShouldBeRendered) {
         val = this.state.texts[i];
       }
       newrows.push(val);
 
-      console.log('should render row', rowShouldBeRendered, val);
       if (rowIsCloseToViewable(i, 0)) {
         visibleMonths.push(xdateToData(val));
       }
