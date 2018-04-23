@@ -21,7 +21,6 @@ export default function getStyle(theme={}) {
     },
     calendar: {
       backgroundColor: 'grey',
-      height: 'min-content',
     },
     ...(theme[STYLESHEET_ID] || {})
   });
