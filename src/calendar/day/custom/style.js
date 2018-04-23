@@ -10,7 +10,7 @@ export default function styleConstructor(theme={}) {
       flex: 1,
       // width: 32,
       // height: 32,
-      alignItems: 'center'
+      alignItems: 'center',
       backgroundColor: 'grey'
     },
     text: {

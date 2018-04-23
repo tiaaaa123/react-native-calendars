@@ -7,10 +7,10 @@ export default function styleConstructor(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     base: {
-      flex: 1
+      flex: 1,
       // width: 32,
       // height: 32,
-      alignItems: 'center'
+      alignItems: 'center',
       backgroundColor: 'pink'
     },
     text: {
