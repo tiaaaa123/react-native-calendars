@@ -45,6 +45,8 @@ class Calendar extends Component {
 
     // Hide month navigation arrows. Default = false
     hideArrows: PropTypes.bool,
+    // Hide month header. Default = false
+    hideHeader: PropTypes.bool,
     // Display loading indicador. Default = false
     displayLoadingIndicator: PropTypes.bool,
     // Do not show days of other months in month page. Default = false
@@ -255,20 +257,22 @@ class Calendar extends Component {
     }
     return (
       <View style={[this.style.container, this.props.style]}>
-        <CalendarHeader
-          theme={this.props.theme}
-          hideArrows={this.props.hideArrows}
-          month={this.state.currentMonth}
-          addMonth={this.addMonth}
-          showIndicator={indicator}
-          firstDay={this.props.firstDay}
-          renderArrow={this.props.renderArrow}
-          monthFormat={this.props.monthFormat}
-          hideDayNames={this.props.hideDayNames}
-          weekNumbers={this.props.showWeekNumbers}
-          onPressArrowLeft={this.props.onPressArrowLeft}
-          onPressArrowRight={this.props.onPressArrowRight}
-        />
+        {this.props.hideHeader &&
+          <CalendarHeader
+            theme={this.props.theme}
+            hideArrows={this.props.hideArrows}
+            month={this.state.currentMonth}
+            addMonth={this.addMonth}
+            showIndicator={indicator}
+            firstDay={this.props.firstDay}
+            renderArrow={this.props.renderArrow}
+            monthFormat={this.props.monthFormat}
+            hideDayNames={this.props.hideDayNames}
+            weekNumbers={this.props.showWeekNumbers}
+            onPressArrowLeft={this.props.onPressArrowLeft}
+            onPressArrowRight={this.props.onPressArrowRight}
+          />
+        }
         <View style={this.style.monthView}>{weeks}</View>
       </View>);
   }
