@@ -16,15 +16,14 @@ class CalendarListItem extends Component {
   }
 
   render() {
-    console.log(this.props.calendarHeight);
     const row = this.props.item;
     if (row.getTime) {
       return (
         <Calendar
           theme={this.props.theme}
-          style={[{height: 100, width: this.props.calendarWidth}, this.style.calendar]}
+          style={[{height: this.props.calendarHeight, width: this.props.calendarWidth}, this.style.calendar]}
           current={row}
-          hideArrows
+          hideArrows={this.props.hideArrows}
           hideHeader={this.props.hideHeader}
           hideExtraDays={this.props.hideExtraDays === undefined ? true : this.props.hideExtraDays}
           disableMonthChange
