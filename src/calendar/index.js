@@ -179,7 +179,7 @@ class Calendar extends Component {
       dayComp = (
         <DayComp
           key={id}
-          current={this.props.current}
+          current={xdateToData(parseDate(this.props.current))}
           state={state}
           theme={this.props.theme}
           onPress={this.pressDay}
