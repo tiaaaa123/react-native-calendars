@@ -107,11 +107,16 @@ class CalendarList extends Component {
     console.log(scrollAmount, diffMonths);
     console.log(this.state.rows);
     this.listView.scrollToOffset({offset: scrollAmount, animated: false});
+    // const index = this.state.rows.findIndex(d => d.)
+    // this.listView.scrollToIndex({index: , animated: true})
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(nextProps) {
     const current = parseDate(this.props.current);
-    const nextCurrent = parseDate(props.current);
+    const nextCurrent = parseDate(nextProps.current);
+    console.log(current);
+    console.log(nextCurrent);
+    this.setState({openDate: nextCurrent});
     if (nextCurrent && current && nextCurrent.getTime() !== current.getTime()) {
       this.scrollToMonth(nextCurrent);
     }
