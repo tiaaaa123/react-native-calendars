@@ -46,8 +46,8 @@ class CalendarList extends Component {
 
   constructor(props) {
     super(props);
-    this.pastScrollRange = props.pastScrollRange === undefined ? 50 - 15 : props.pastScrollRange;
-    this.futureScrollRange = props.futureScrollRange === undefined ? 50 - 15 : props.futureScrollRange;
+    this.pastScrollRange = props.pastScrollRange === undefined ? 32 : props.pastScrollRange;
+    this.futureScrollRange = props.futureScrollRange === undefined ? 32 : props.futureScrollRange;
     this.style = styleConstructor(props.theme);
     this.calendarWidth = this.props.calendarWidth || width;
     this.calendarHeight = props.calendarHeight;
