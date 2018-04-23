@@ -63,7 +63,7 @@ class CalendarList extends Component {
        * This selects range around current shown month [-0, +2] or [-1, +1] month for detail calendar rendering.
        * If `this.pastScrollRange` is `undefined` it's equal to `false` or 0 in next condition.
        */
-      if (this.pastScrollRange - 10 <= i && i <= this.pastScrollRange + 10 || !this.pastScrollRange && i <= this.pastScrollRange + 2) {
+      if (this.pastScrollRange - 1 <= i && i <= this.pastScrollRange + 1 || !this.pastScrollRange && i <= this.pastScrollRange + 2) {
         rows.push(rangeDate);
       } else {
         rows.push(rangeDateStr);
@@ -115,9 +115,11 @@ class CalendarList extends Component {
     const newrows = [];
     for (let i = 0; i < rowclone.length; i++) {
       let val = this.state.texts[i];
+      console.log(val);
       if (rowclone[i].getTime) {
         val = rowclone[i].clone();
         val.propbump = rowclone[i].propbump ? rowclone[i].propbump + 1 : 1;
+        console.log(val);
       }
       newrows.push(val);
     }
@@ -142,6 +144,7 @@ class CalendarList extends Component {
     for (let i = 0; i < rowclone.length; i++) {
       let val = rowclone[i];
       const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
+      console.log(val, rowShouldBeRendered);
       if (rowShouldBeRendered && !rowclone[i].getTime) {
         val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
       } else if (!rowShouldBeRendered) {
