@@ -46,8 +46,8 @@ class CalendarList extends Component {
 
   constructor(props) {
     super(props);
-    this.pastScrollRange = props.pastScrollRange === undefined ? 50 : props.pastScrollRange;
-    this.futureScrollRange = props.futureScrollRange === undefined ? 50 : props.futureScrollRange;
+    this.pastScrollRange = props.pastScrollRange === undefined ? 50 - 15 : props.pastScrollRange;
+    this.futureScrollRange = props.futureScrollRange === undefined ? 50 - 15 : props.futureScrollRange;
     this.style = styleConstructor(props.theme);
     this.calendarWidth = this.props.calendarWidth || width;
     this.calendarHeight = props.calendarHeight;
@@ -106,9 +106,10 @@ class CalendarList extends Component {
     console.log(month, this.state.openDate);
     console.log(scrollAmount, diffMonths);
     console.log(this.state.rows);
-    this.listView.scrollToOffset({offset: scrollAmount, animated: false});
-    // const index = this.state.rows.findIndex(d => d.)
-    // this.listView.scrollToIndex({index: , animated: true})
+    // this.listView.scrollToOffset({offset: scrollAmount, animated: false});
+    console.log(month, month.clone().setDate(1));
+    const index = this.state.rows.findIndex(d => d.diffMonths(month.clone().setDate(1)));
+    this.listView.scrollToIndex({index: index , animated: true});
   }
 
   componentWillReceiveProps(nextProps) {

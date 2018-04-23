@@ -8,10 +8,9 @@ export default function styleConstructor(theme={}) {
   return StyleSheet.create({
     base: {
       flex: 1,
-      // width: 32,
-      // height: 32,
+      width: 32,
+      height: 32,
       alignItems: 'center',
-      backgroundColor: 'pink'
     },
     text: {
       marginTop: Platform.OS === 'android' ? 4 : 6,
