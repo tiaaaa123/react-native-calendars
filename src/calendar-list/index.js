@@ -165,7 +165,11 @@ class CalendarList extends Component {
   }
 
   getItemLayout = (data, index) => {
-    return {length: this.props.horizontal ? this.calendarWidth : this.calendarHeight, offset: (this.props.horizontal ? this.calendarWidth : this.calendarHeight) * index, index};
+    return {
+      length: this.props.horizontal ? this.calendarWidth : this.calendarHeight,
+      // offset: (this.props.horizontal ? this.calendarWidth : this.calendarHeight) * index,
+      index
+    };
   }
 
   getMonthIndex = (month) => {
@@ -195,7 +199,7 @@ class CalendarList extends Component {
         scrollEnabled={this.props.scrollingEnabled !== undefined ? this.props.scrollingEnabled : true}
         keyExtractor={(item, index) => String(index)}
         initialScrollIndex={this.state.openDate ? this.getMonthIndex(this.state.openDate) : false}
-        getItemLayout={this.getItemLayout}
+        // getItemLayout={this.getItemLayout}
         scrollsToTop={this.props.scrollsToTop !== undefined ? this.props.scrollsToTop : false}
       />
     );
