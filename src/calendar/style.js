@@ -19,7 +19,6 @@ export default function getStyle(theme={}) {
       justifyContent: 'space-around'
     },
     dayContainer: {
-      // width: 32
       flex: 1,
       margin: 1,
     },
