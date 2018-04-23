@@ -11,6 +11,7 @@ export default function styleConstructor(theme={}) {
       flex: 1,
       // height: 32,
       alignItems: 'center'
+      backgroundColor: 'red'
     },
     text: {
       marginTop: 4,

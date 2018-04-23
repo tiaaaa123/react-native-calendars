@@ -11,6 +11,7 @@ export default function styleConstructor(theme={}) {
       // width: 32,
       // height: 32,
       alignItems: 'center'
+      backgroundColor: 'pink'
     },
     text: {
       marginTop: Platform.OS === 'android' ? 4 : 6,
