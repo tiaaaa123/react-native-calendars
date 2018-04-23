@@ -136,18 +136,18 @@ class CalendarList extends Component {
       return false;
     }
 
-    const rowclone = this.state.rows;
-    const newrows = [];
+    // const rowclone = this.state.rows;
+    // const newrows = [];
     const visibleMonths = [];
     for (let i = 0; i < rowclone.length; i++) {
       let val = rowclone[i];
-      const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
-      if (rowShouldBeRendered && !rowclone[i].getTime) {
-        val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
-      } else if (!rowShouldBeRendered) {
-        val = this.state.texts[i];
-      }
-      newrows.push(val);
+      // const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
+      // if (rowShouldBeRendered && !rowclone[i].getTime) {
+      //   val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
+      // } else if (!rowShouldBeRendered) {
+      //   val = this.state.texts[i];
+      // }
+      // newrows.push(val);
       if (rowIsCloseToViewable(i, 0)) {
         visibleMonths.push(xdateToData(val));
       }
@@ -155,9 +155,9 @@ class CalendarList extends Component {
     if (this.props.onVisibleMonthsChange) {
       this.props.onVisibleMonthsChange(visibleMonths);
     }
-    this.setState({
-      rows: newrows
-    });
+    // this.setState({
+    //   rows: newrows
+    // });
   }
 
   renderCalendar = ({item}) => {
@@ -182,6 +182,7 @@ class CalendarList extends Component {
       <FlatList
         ref={(c) => this.listView = c}
         //scrollEventThrottle={1000}
+        contentContainerStyle={this.props.contentContainerStyle}
         dayComponent={this.props.dayComponent}
         style={[this.style.container, this.props.style]}
         initialListSize={this.pastScrollRange + this.futureScrollRange + 1}
