@@ -108,7 +108,7 @@ class CalendarList extends Component {
     console.log(this.state.rows);
     // this.listView.scrollToOffset({offset: scrollAmount, animated: false});
     console.log(month, month.clone().setDate(1));
-    const index = this.state.rows.findIndex(d => d.diffMonths(month.clone().setDate(1)));
+    const index = this.state.rows.findIndex(d => parseDate(d).diffMonths(month.clone().setDate(1)));
     this.listView.scrollToIndex({index: index , animated: true});
   }
 
