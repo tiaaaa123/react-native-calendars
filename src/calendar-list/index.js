@@ -141,12 +141,12 @@ class CalendarList extends Component {
     const visibleMonths = [];
     for (let i = 0; i < rowclone.length; i++) {
       let val = rowclone[i];
-      // const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
-      // if (rowShouldBeRendered && !rowclone[i].getTime) {
-      //   val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
-      // } else if (!rowShouldBeRendered) {
-      //   val = this.state.texts[i];
-      // }
+      const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
+      if (rowShouldBeRendered && !rowclone[i].getTime) {
+        val = this.state.openDate.clone().addMonths(i - this.pastScrollRange, true);
+      } else if (!rowShouldBeRendered) {
+        val = this.state.texts[i];
+      }
       // newrows.push(val);
       if (rowIsCloseToViewable(i, 0)) {
         visibleMonths.push(xdateToData(val));
