@@ -182,6 +182,7 @@ class CalendarList extends Component {
       <FlatList
         ref={(c) => this.listView = c}
         //scrollEventThrottle={1000}
+        dayComponent={this.props.dayComponent}
         style={[this.style.container, this.props.style]}
         initialListSize={this.pastScrollRange + this.futureScrollRange + 1}
         data={this.state.rows}
