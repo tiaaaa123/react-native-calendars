@@ -7,12 +7,10 @@ export default function getStyle(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     container: {
-      // backgroundColor: appStyle.calendarBackground,
-      backgroundColor: 'orange',
+      backgroundColor: appStyle.calendarBackground,
     },
     monthView: {
-      // backgroundColor: appStyle.calendarBackground,
-      backgroundColor: 'blue'
+      backgroundColor: appStyle.calendarBackground,
     },
     week: {
       // marginTop: 7,
@@ -21,7 +19,6 @@ export default function getStyle(theme={}) {
       justifyContent: 'space-around'
     },
     dayContainer: {
-      // width: 32
     },
     ...(theme[STYLESHEET_ID] || {})
   });

@@ -7,8 +7,7 @@ export default function getStyle(theme={}) {
   const appStyle = {...defaultStyle, ...theme};
   return StyleSheet.create({
     container: {
-      // backgroundColor: appStyle.calendarBackground,
-      backgroundColor: 'pink'
+      backgroundColor: appStyle.calendarBackground,
     },
     placeholder: {
       backgroundColor: appStyle.calendarBackground,
@@ -21,7 +20,8 @@ export default function getStyle(theme={}) {
       color: appStyle.dayTextColor
     },
     calendar: {
-      backgroundColor: 'grey',
+
+      paddingBottom: 0,
     },
     ...(theme[STYLESHEET_ID] || {})
   });
