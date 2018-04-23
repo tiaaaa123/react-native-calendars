@@ -79,19 +79,21 @@ class CalendarList extends Component {
   }
 
   scrollToDay = (d, offset, animated) => {
-    const day = parseDate(d);
-    const diffMonths = Math.round(this.state.openDate.clone().setDate(1).diffMonths(day.clone().setDate(1)));
-    let scrollAmount = (this.calendarHeight * this.pastScrollRange) + (diffMonths * this.calendarHeight) + (offset || 0);
-    let week = 0;
-    const days = dateutils.page(day, this.props.firstDay);
-    for (let i = 0; i < days.length; i++) {
-      week = Math.floor(i / 7);
-      if (dateutils.sameDate(days[i], day)) {
-        scrollAmount += 46 * week;
-        break;
+    setTimeout(() => {
+      const day = parseDate(d);
+      const diffMonths = Math.round(this.state.openDate.clone().setDate(1).diffMonths(day.clone().setDate(1)));
+      let scrollAmount = (this.calendarHeight * this.pastScrollRange) + (diffMonths * this.calendarHeight) + (offset || 0);
+      let week = 0;
+      const days = dateutils.page(day, this.props.firstDay);
+      for (let i = 0; i < days.length; i++) {
+        week = Math.floor(i / 7);
+        if (dateutils.sameDate(days[i], day)) {
+          scrollAmount += 46 * week;
+          break;
+        }
       }
-    }
-    this.listView.scrollToOffset({offset: scrollAmount, animated});
+      this.listView.scrollToOffset({offset: scrollAmount, animated});
+    }, 10);
   }
 
   scrollToMonth = (m) => {
@@ -103,9 +105,9 @@ class CalendarList extends Component {
     this.listView.scrollToOffset({offset: scrollAmount, animated: false});
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(nextProps) {
     const current = parseDate(this.props.current);
-    const nextCurrent = parseDate(props.current);
+    const nextCurrent = parseDate(nextProps.current);
     if (nextCurrent && current && nextCurrent.getTime() !== current.getTime()) {
       this.scrollToMonth(nextCurrent);
     }
@@ -205,9 +207,5 @@ class CalendarList extends Component {
     );
   }
 }
-
-CalendarList.defaultProps = {
-  // calendarHeight: 360
-};
 
 export default CalendarList;
